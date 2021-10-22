@@ -1,0 +1,58 @@
+<div class="page">
+  <div class="header-grid">
+    <header>
+      <div class="f1">
+        <a routerLink="/partners" class="partenaire bar-button" id="button">les partenaires</a>
+        <div [hidden]="authenticated()">
+          <a routerLink="enterprise/gifts" class="service bar-button" id="button">les paniers</a>
+        </div>
+        <div [hidden]="!authenticated()">
+          <div [hidden]="!identityEnterprise()">
+            <a routerLink="enterprise/mygifts" class="service bar-button" id="button">mes paniers</a>
+          </div>
+          <div [hidden]="!identityUser()">
+            <a routerLink="enterprise/gifts" class="service bar-button" id="button">les paniers</a>
+          </div>
+        </div>
+      </div>
+      <div class="f2">
+        <a routerLink="/" class="home bar-button">Good Conscience</a>
+      </div>
+      <div class="f3">
+        <div [hidden]="authenticated()">
+          <a routerLink="/subscribe" class="inscription bar-button" id="button">inscription</a>
+          <a routerLink="/login" class="connexion bar-button" id="button">connexion</a>
+        </div>
+        <div [hidden]="!authenticated()">
+          <div [hidden]="!identityUser()">
+            <a routerLink="/user/infos" class="informations bar-button" id="button">mes informations</a>
+          </div>
+          <div [hidden]="!identityEnterprise()">
+            <a routerLink="/enterprise/infos" class="informations bar-button" id="button">mes informations</a>
+          </div>
+          <a (click)="logout()" class="deconnexion bar-button" id="button">deconnexion</a>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="body-grid">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer-grid">
+    <footer>
+      <div class="footer-image">
+        <a routerLink="/">
+          <img src="/assets/images/logo.png"/>
+        </a>
+      </div>
+      <div class="footer-contenue">
+        <ul>
+          <li><a routerLink="/partners">nos partenaires</a></li>
+          <li><a routerLink="enterprise/mygifts">les paniers</a></li>
+          <li><a routerLink="/subscribe">s'inscrire</a></li>
+          <li><a routerLink="/login">se connecter</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</div>

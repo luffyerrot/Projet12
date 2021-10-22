@@ -1,0 +1,53 @@
+<div class="parent-box">
+    <div class="box">
+        <div class="grid-infos-description">
+            <div class="grid-infos-sup">
+                <img class="infos-image" src="{{ enterprise.linkimg }}"/>
+            </div>
+            <div class="grid-infos-inf">
+                <div id="grid-ul">
+                    <ul>
+                        <li class="infos">name</li>
+                        <li class="infos">email</li>
+                    </ul>
+                    <ul>
+                        <li class="infos">{{ enterprise.name }}</li>
+                        <li class="infos"><a href="mailto:{{ enterprise.email }}">{{ enterprise.email }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="grid-infos-inf-description">
+                <p class="description">{{ enterprise.enterpriseInformations.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="box gift" *ngFor="let giftBasket of giftBaskets; let i = index">
+        <h2>{{ giftBasket.name }}</h2>
+        <p>{{ giftBasket.description }}</p>
+        <div class="child-gift-box" *ngFor="let product of giftBasket.products">
+            <div class="grid-infos-description">
+                <div class="grid-infos-sup">
+                    <img class="infos-image-gift" src="{{ product.linkimg }}"/>
+                </div>
+                <div class="grid-infos-inf">
+                    <div id="grid-ul">
+                        <ul>
+                            <li class="infos">nom</li>
+                        </ul>
+                        <ul>
+                            <li class="infos">{{ product.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid-infos-inf-description">
+                    <p class="description">{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="div-box">
+            <div *ngIf="connected()" id="button-classic">
+                <button (click)="booking(giftBasket.name)">Reserver</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="parent-box">
+	<div class="box gift" *ngFor="let giftBasket of giftBaskets; let i = index">
+        <h2>{{giftBasket.name}}</h2>
+        <p>{{giftBasket.description}}</p>
+        <div class="child-gift-box" *ngFor="let product of giftBasket.products">
+            <div class="grid-infos-description">
+                <div class="grid-infos-sup">
+                    <img class="infos-image-gift" src="{{ product.linkimg }}"/>
+                </div>
+                <div class="grid-infos-inf">
+                    <div id="grid-ul">
+                        <ul>
+                            <li class="infos">name</li>
+                        </ul>
+                        <ul>
+                            <li class="infos">{{ product.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid-infos-inf-description">
+                    <p class="description">{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="div-box">
+            <div id="button-classic">
+                <button (click)="delete(giftBasket.name)">Supprimer</button>
+            </div>
+        </div>
+	</div>
+    <div class="button-page" id="button-page-principal">
+        <a routerLink="/enterprise/gift/add">Ajouter un panier</a>
+    </div>
+</div>

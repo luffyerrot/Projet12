@@ -1,0 +1,798 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-color: #DDDDDD;
+}
+
+h1, h2, h3, h4, p, form > div, li, p, a {
+    cursor: default;
+    color: #30475E;
+    text-decoration: none;
+    text-align: center;
+}
+
+.page {
+    font-family: Sedan, sans-serif;
+    max-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 120px auto 240px;
+    
+}
+
+.header-grid {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.body-grid {
+    grid-auto-rows: minmax(100%, auto);
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.footer-grid {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+header {
+    position: relative;
+    border-bottom: 1px #222831 solid;
+
+    display: block;
+    width: 100%;
+    height: 120px;
+    left: 0;
+    top: 0;
+}
+
+.f1, .f2, .f3 {
+    position: absolute;
+    top: 0;
+}
+
+.f1, .f3 {
+    width: 30%;
+    height: 100%;
+}
+
+/* Frame 1 */
+
+.f1 {
+    left: 0;
+}
+
+/* Frame 2 */
+
+.f2 {
+    width: 40%;
+    height: 100%;
+    left: 30%;
+}
+
+/* Frame 3 */
+
+.f3 {
+    left: 70%;
+}
+
+.bar-button {
+    position: absolute;
+
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+
+    color: #30475E;
+}
+
+/* connexion */
+
+.connexion, .deconnexion {
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    top: 0;
+
+    font-size: 24px;
+    line-height: 33px;
+}
+
+/* inscription */
+
+.inscription, .informations {
+    width: 50%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    
+    font-size: 24px;
+    line-height: 33px;
+}
+
+/* Good Conscience */
+
+.home {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    text-decoration: none;
+    font-size: 32px;
+    line-height: 120px;
+}
+
+/* nos services */
+
+.service {
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    
+    font-size: 24px;
+    line-height: 33px;
+}
+
+/* nos partenaires */
+
+.partenaire {
+    width: 50%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    font-size: 24px;
+    line-height: 33px;
+}
+
+#button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition-duration: 0.4s;
+}
+
+#button:hover {
+    border-bottom: 6px #222831 solid;
+}
+
+.parent-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box {
+    border: 2px #222831 solid;
+    box-shadow: 10px 10px #222831;
+    min-width: 520px;
+    margin: 20px 10px;
+    padding: 50px 20px 50px 20px;
+
+    display: block;
+}
+
+.infos-image {
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos-image-gift {
+    width: 120px;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gift > h2, .gift > p {
+    width: 100%;
+    text-align: center;
+}
+
+.child-gift-box {
+    border: 2px #222831 solid;
+    box-shadow: none;
+    min-width: 160px;
+    margin: 20px 10px;
+    padding: 50px 20px 50px 20px;
+
+    display: block;
+}
+
+.box > table {
+    width: 50%;
+    height: 100%;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    color: #30475E;
+    border-top: 1px #222831 solid;
+    width: 100%;
+    height: 100%;
+}
+
+footer > div > a > img {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-right: 50px;
+    border-right: 2px #222831 solid;
+}
+
+.footer-image {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.footer-contenue > ul > li {
+    margin: 0 10px;
+    padding: 0 10px;
+    border-left: 1px #222831 solid;
+    border-right: 1px #222831 solid;
+}
+
+.footer-contenue > ul > li > a:hover {
+    color: #48b173;
+}
+
+.footer-contenue {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    align-items: center;
+}
+
+.title {
+    font-size: 34px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #30475E;
+}
+
+/* 
+    boutons
+*/
+
+.button-page {
+    display: flex;
+    height: 40px;
+    width: 90%;
+    border: 2px #222831 solid;
+    margin: 20px;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#button-page-principal {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+  
+#button-page-principal a {
+    position: relative;
+    transition: all .35s ease-Out;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-style: normal;
+    color: #30475E;
+}
+
+.center {
+    display: block;
+    margin: 0 10px;
+    min-width: 340px;
+}
+
+#slide {
+    width: 100%;
+    height: 100%;
+    left: -600px;
+    background: #222831;
+    position: absolute;
+    transition: all .35s ease-Out;
+    bottom: 0;
+}
+
+#button-page-principal:hover #slide {
+    left: 0;
+}
+
+#button-page-principal:hover a {
+    text-decoration: none;
+    font-size: 26px;
+    font-style: normal;
+    color: #ffffff;
+}
+
+.login-buttons {
+    display: flex;
+}
+
+.login-buttons > div > a, .login-buttons > div > b > p {
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #610e0e;
+    justify-content: center;
+}
+
+#link-login:hover {
+    color: #7a1515;
+    text-decoration: underline;
+}
+
+/*
+    formulaire
+*/
+
+form {
+    display: block;
+    height: 100%;
+}
+
+#button-form > button, #button-classic > button {
+    border: none;
+    padding: 4px 8px;
+    height: 40px;
+    text-decoration: none;
+    border-color: #222831;
+    border-radius: 2px;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 20px;
+    
+    transition-duration: 0.1s;
+}
+  
+#button-form > button:valid:hover, #button-classic > button:valid:hover {
+    background-color: #373737;
+    color: #ffffff;
+}
+
+#button-form > button:invalid, #button-classic > button:invalid {
+    background-color: #DDDDDD;
+    color: #1d1d1d;
+}
+
+#button-form, #button-classic {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#button-form {
+    justify-content: right;
+}
+
+#button-classic {
+    justify-content: center;
+}
+
+#subscribe-form-parent {
+    display: grid;
+    grid-template-columns: 200px 400px;
+    justify-content: center;
+}
+
+#subscribe-form-label {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+#subscribe-form-label > label {
+    margin: 10px 20px 10px 0;
+    height: 30px;
+    width: 100%;
+}
+
+.padding-log {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+#subscribe-form-input {
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+#subscribe-form-input > input {
+    border: 2px #222831 solid;
+    margin: 20px 10px 0 20px;
+    width: 400px;
+    height: 30px;
+    font-size: 14px;
+    padding-left: 2px;
+}
+
+#subscribe-form-input > textarea {
+    border: 2px #222831 solid;
+    margin: 20px 10px 0 20px;
+    min-width: 364px;
+    min-height: 60px;
+    max-height: 120px;
+    font-size: 14px;
+    font-family: Sedan, sans-serif;
+    padding-left: 2px;
+}
+
+#subscribe-form-input > input:focus {
+    font-size: 16px;
+}
+
+#subscribe-form-input > div {
+    margin-bottom: 5px;
+    margin-left: 20px;
+    height: 29px;
+    color: #7a1515;
+}
+
+/* informations */
+
+.grid-infos {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+}
+
+.grid-infos-description {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+}
+
+.grid-infos-sup, .grid-infos-inf, .grid-infos-inf-description {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos {
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.description {
+    width: 100%;
+    height: auto;
+    margin-top: 20px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grid-ul {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    justify-content: center;
+}
+
+.grid-infos-sup {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border-bottom: 2px #222831 solid;
+}
+
+.grid-infos-inf {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.grid-infos-inf-description {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.banner > img {
+    margin-top: 40px;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.no-border {
+    border: none;
+    box-shadow: none;
+}
+
+.div-box {
+    width: 100%;
+}
+
+.border {
+    border: 2px #222831 solid;
+    padding: 20px;
+    margin: 0 30%;
+}
+
+.horizontal-ligne {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-top: 1px #222831 solid;
+}
+
+.hidden-div {
+    visibility: hidden;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.box-separation {
+    width: 100%;
+}
+
+/* responsive mobile */
+
+@media screen and (max-width: 800px) {
+
+    html {
+        max-width: 100%;
+        height: 100%;
+        right: 0;
+    }
+
+    .page {
+        width: 100%;
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: 120px auto 240px;
+        
+    }
+    
+    .header-grid {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    
+    .body-grid {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    
+    .footer-grid {
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .box, .child-gift-box {
+        box-shadow: none;
+    }
+
+    .f2 {
+        display: none;
+    }
+
+    .f1, .f3 {
+        width: 100%;
+        height: 60px;
+        left: 0;
+    }
+
+    .f3 {
+        top: 60px;
+    }
+
+    #button:hover {
+        background-color: #222831;
+        color: #DDDDDD;
+        border-bottom: none;
+    }
+
+    .connexion, .deconnexion {
+        border-left: 3px #222831 solid;
+    }
+
+    .inscription, .informations {
+        border-right: 3px #222831 solid;
+    }
+
+    .home {
+        display: none;
+    }
+
+    .service {
+        border-left: 3px #222831 solid;
+    }
+
+    .partenaire {
+        border-right: 3px #222831 solid;
+    }
+
+    .infos-image {
+        width: 120px;
+        height: 120px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul {
+        width: 160px;
+    }
+
+    .footer-contenue > ul > li {
+        border-right: none;
+        border-left: none;
+    }
+
+    .box {
+        border: 2px #222831 solid;
+        box-shadow: none;
+        width: 90%;
+        padding: 50px 0px;
+        margin: 20px 0;
+        display: block;
+    }
+
+    footer {
+        position: relative;
+    
+        flex-wrap: wrap;
+        color: #30475E;
+        border-top: 1px #222831 solid;
+        width: 100%;
+        height: 240px;
+    }
+
+    .footer-contenue {
+        width: 100%;
+        height: 160px;
+        top: 120px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-image {
+        height: 80px;
+        width: 100%;
+        margin: 0 10%;
+        display: flex;
+        justify-content: center;
+        border-bottom: 2px #222831 solid;
+    }
+    
+    footer > div > a > img {
+        width: 50px;
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 0;
+        padding-right: 0;
+        border-right: none;
+    }
+    
+    .child-gift-box {
+        border: none;
+        border-top: 2px #222831 solid;
+        border-bottom: 2px #222831 solid;
+        box-shadow: none;
+        min-width: 120px;
+        margin: 20px 0;
+        padding: 50px 0;
+
+        display: block;
+    }
+
+    .border {
+        border: 2px #222831 solid;
+        padding: 20px;
+        margin: 0 5%;
+    }
+
+    #subscribe-form-input > input {
+        border: 2px #222831 solid;
+        margin: 10px 0;
+        width: 220px;
+        height: 30px;
+        font-size: 12px;
+        padding-left: 2px;
+    }
+
+    #subscribe-form-parent {
+        display: block;
+        width: 80%;
+        margin: 0 10%;
+    }
+    
+    #subscribe-form-input > textarea {
+        border: 2px #222831 solid;
+        margin: 10px 0;
+        min-width: 220px;
+        max-width: 240px;
+        min-height: 60px;
+        max-height: 120px;
+        font-size: 12px;
+        font-family: Sedan, sans-serif;
+        padding-left: 2px;
+    }
+
+    #subscribe-form-input > div {
+        margin-bottom: 5px;
+        margin: 10px;
+        height: 40px;
+        width: 100%;
+        justify-content: left;
+        color: #7a1515;
+    }
+
+    #button-form {
+        justify-content: center;
+    }
+
+    li {
+        margin-top: 5px;
+    }
+}

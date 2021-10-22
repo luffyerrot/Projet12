@@ -1,0 +1,28 @@
+<div class="parent-box">
+    <div class="box" *ngIf="!bookings?.length">
+        <p>Aucune réservation</p>
+    </div>
+	<div class="box" *ngFor="let booking of bookings">
+		<div class="grid-infos-description">
+            <div class="grid-infos-inf">
+                <div id="grid-ul">
+                    <ul>
+                        <li class="infos">Nom du client</li>
+                        <li class="infos">Mail du client</li>
+                        <li class="infos">Nom du panier</li>
+                        <li class="infos">Date de réservation</li>
+                    </ul>
+                    <ul>
+                        <li class="infos">{{ booking.user.username }}</li>
+                        <li class="infos">{{ booking.user.email }}</li>
+                        <li class="infos">{{ booking.giftBasket.name }}</li>
+                        <li class="infos">{{ booking.booking_date.substring(0, 10) }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="grid-infos-inf-description">
+                <p class="description">{{ booking.giftBasket.description }}</p>
+            </div>
+        </div>
+	</div>
+</div>
