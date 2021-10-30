@@ -1,4 +1,4 @@
-package fr.pierre.goodconscience.secutiry;
+package fr.pierre.goodconscience.security;
 
 import java.util.Collection;
 

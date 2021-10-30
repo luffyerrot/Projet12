@@ -1,4 +1,4 @@
-package fr.pierre.goodconscience.secutiry.util;
+package fr.pierre.goodconscience.security.util;
 
 import java.util.Date;
 import java.util.HashMap;

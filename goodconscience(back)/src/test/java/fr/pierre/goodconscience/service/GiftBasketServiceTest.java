@@ -8,7 +8,6 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
 import fr.pierre.goodconscience.entity.GiftBasket;
 
@@ -17,17 +16,19 @@ public class GiftBasketServiceTest {
 
 	@Autowired
 	GiftBasketService giftBasketService;
+	@Autowired
+	EnterpriseService enterpriseService;
 	
 	@Test
-	@Rollback
 	public void createUpdateAndDeleteGiftBasket() {
+		
 		GiftBasket giftBasketTest = new GiftBasket();
 		giftBasketTest.setName("test");
 		giftBasketTest.setDescription("test description");
 		Date actualDate = new Date();
 		giftBasketTest.setRecovery_date(actualDate);
 		
-		GiftBasket giftBasketSave = giftBasketService.create(giftBasketTest);
+		GiftBasket giftBasketSave = giftBasketService.createForTest(giftBasketTest);
 		
 		assertEquals("test", giftBasketSave.getName());
 		assertEquals(actualDate, giftBasketSave.getRecovery_date());
@@ -45,7 +46,7 @@ public class GiftBasketServiceTest {
 
 		assertEquals("test1", giftBasketUpdate.getName());
 		assertEquals(newDate, giftBasketUpdate.getRecovery_date());
-		
+
 		giftBasketService.delete(giftBasketUpdate);
 	}
 }

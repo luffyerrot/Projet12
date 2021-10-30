@@ -1,0 +1,175 @@
+<div class="parent-box">
+	<div class="box">
+		<div class="grid-infos" *ngIf="form">
+			<div class="grid-infos-sup">
+				<img class="infos-image" src="{{ user.linkimg }}"/>
+			</div>
+            <form (ngSubmit)="onSubmit()" [formGroup]="form">
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="username">Pseudo</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="username" id="username" name="username" placeholder="Entrer votre pseudo" [ngClass]="{ 'is-invalid': submitted && form.controls.username.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.username.errors">
+                            <div *ngIf="form.controls.username.errors.required">Le pseudo est requis</div>
+                            <div *ngIf="form.controls.username.errors.minlength || form.controls.username.errors.maxlength">Le pseudo doit contenir entre 4 et 20 caractères</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.username.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="email" id="email" name="email" placeholder="Entrer l'email" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.email.errors">
+                            <div *ngIf="form.controls.email.errors.required">L'email est requis</div>
+                            <div *ngIf="form.controls.email.errors.email">L'email est invalide</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.email.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="name">Nom</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="name" id="name" name="name" placeholder="Entrer votre nom" [ngClass]="{ 'is-invalid': submitted && form.controls.name.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.name.errors">
+                            <div *ngIf="form.controls.name.errors.required">Le nom est requis</div>
+                            <div *ngIf="form.controls.name.errors.minlength || form.controls.name.errors.maxlength">Le nom doit contenir entre 4 et 20 caractères</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.name.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="firstname">Prénom</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="firstname" id="firstname" name="firstname" placeholder="Entrer votre prénom" [ngClass]="{ 'is-invalid': submitted && form.controls.firstname.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.firstname.errors">
+                            <div *ngIf="form.controls.firstname.errors.required">Le prénom est requis</div>
+                            <div *ngIf="form.controls.firstname.errors.minlength || form.controls.firstname.errors.maxlength">Le prénom doit contenir entre 4 et 20 caractères</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.firstname.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="birthday">Date de naissance</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="date" formControlName="birthday" id="birthday" name="birthday" placeholder="Entrer votre date de naissance" [ngClass]="{ 'is-invalid': submitted && form.controls.birthday.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.birthday.errors">
+                            <div *ngIf="form.controls.birthday.errors.required">Le numéro de voie est requis</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.birthday.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="number">Numéro de voie</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="number" id="number" name="number" placeholder="Entrer le Numéro de votre voie" [ngClass]="{ 'is-invalid': submitted && form.controls.number.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.number.errors">
+                            <div *ngIf="form.controls.number.errors.required">Le numéro de voie est requis</div>
+                            <div *ngIf="form.controls.number.errors.pattern">Le numéro de voie doit seulement comporter des chiffres</div>
+                            <div *ngIf="form.controls.number.errors.minlength || form.controls.number.errors.maxlength">Le numéro de voie doit contenir entre 1 et 3 chiffres</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.number.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="adress">Rue</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="adress" id="adress" name="adress" placeholder="Entrer votre adresse" [ngClass]="{ 'is-invalid': submitted && form.controls.adress.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.adress.errors">
+                            <div *ngIf="form.controls.adress.errors.required">L'adresse est requise</div>
+                            <div *ngIf="form.controls.adress.errors.minlength || form.controls.adress.errors.maxlength">L'adresse doit contenir entre 6 et 30 caractères</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.adress.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="country">Ville</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="country" id="country" name="country" placeholder="Entrer votre ville" [ngClass]="{ 'is-invalid': submitted && form.controls.country.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.country.errors">
+                            <div *ngIf="form.controls.country.errors.required">La ville est requise</div>
+                            <div *ngIf="form.controls.country.errors.minlength || form.controls.country.errors.maxlength">Le ville doit contenir entre 4 et 16 caractères</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.country.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="postcode">Code Postal</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="postcode" id="postcode" name="postcode" placeholder="Entrer votre Code postal" [ngClass]="{ 'is-invalid': submitted && form.controls.postcode.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.postcode.errors">
+                            <div *ngIf="form.controls.postcode.errors.required">Le code postal est requis</div>
+                            <div *ngIf="form.controls.postcode.errors.pattern">Le code postal doit seulement comporter des chiffres</div>
+                            <div *ngIf="form.controls.postcode.errors.minlength || form.controls.postcode.errors.maxlength">Le code postal doit contenir 5 chiffres</div>
+                        </div>
+                    <div>
+                        <div *ngIf="!form.controls.postcode.errors" class="hidden-div">...</div>
+                    </div>
+                    </div>
+                </div>
+                <div id="subscribe-form-parent">
+                    <div class="input-label" id="subscribe-form-label">
+                        <label for="phone_number">Numéro de téléphone</label>
+                    </div>
+                    <div class="input-form" id="subscribe-form-input">
+                        <input type="text" formControlName="phone_number" id="phone_number" name="phone_number" placeholder="Entrer votre Numéro de téléphone" [ngClass]="{ 'is-invalid': submitted && form.controls.phone_number.errors }" [attr.disabled]="inputdisabled ? true : null"/>
+                        <div *ngIf="submitted && form.controls.phone_number.errors">
+                            <div *ngIf="form.controls.phone_number.errors.required">Le numéro de téléphone est requis</div>
+                            <div *ngIf="form.controls.phone_number.errors.pattern">Le numéro de téléphone doit seulement comporter des chiffres</div>
+                            <div *ngIf="form.controls.phone_number.errors.minlength || form.controls.phone_number.errors.maxlength">Le numéro de téléphone doit contenir 10 chiffres</div>
+                        </div>
+                        <div>
+                            <div *ngIf="!form.controls.phone_number.errors" class="hidden-div">...</div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!inputdisabled" id="button-form">
+                    <button type="submit">Appliquer</button>
+                </div>
+            </form>
+            <div *ngIf="inputdisabled" id="button-form">
+                <button (click)="onUpdate()">Modifier</button>
+            </div>
+            <div class="button-page" id="button-page-principal">
+                <a routerLink="/user/restrictions">Mes préférences</a>
+            </div>
+            <div class="button-page" id="button-page-principal">
+                <a routerLink="/user/bookings">Mes réservations</a>
+            </div>
+        </div>
+	</div>
+</div>

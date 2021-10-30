@@ -2,45 +2,40 @@ package fr.pierre.goodconscience.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
 import fr.pierre.goodconscience.entity.Booking;
+import fr.pierre.goodconscience.entity.GiftBasket;
 
 @SpringBootTest
 public class BookingServiceTest {
 
 	@Autowired
+	GiftBasketService giftBasketService;
+	@Autowired
+	EnterpriseService enterpriseService;
+	@Autowired
+	UserService userService;
+	@Autowired
 	BookingService bookingService;
 	
 	@Test
-	@Rollback
-	public void createUpdateAndDeleteBooking() {
-		Booking bookingTest = new Booking();
-		Date actualDate = new Date();
-		bookingTest.setBooking_date(actualDate);
+	public void createAndDeleteBooking() {
 		
-		Booking bookingSave = bookingService.create(bookingTest);
+		GiftBasket giftBasket = new GiftBasket();
+		giftBasket.setName("testpanierBooking");
+		giftBasket.setDescription("testpanierBooking pour réservation");
+		giftBasket.setRecovery_date(new Date());
+		GiftBasket giftBasketCreated = giftBasketService.createForTest(giftBasket);
 		
-		assertEquals(actualDate, bookingSave.getBooking_date());
+		Booking bookingSave = bookingService.createForTest(giftBasketCreated);
+		
+		assertEquals(giftBasketCreated.getId(), bookingSave.getGiftBasket().getId());
 
-		Date newDate = bookingSave.getBooking_date();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(newDate);
-		calendar.set(Calendar.DATE, -30);
-		newDate = calendar.getTime();
-		
-		bookingSave.setBooking_date(newDate);
-		
-		Booking bookingUpdate =  bookingService.update(bookingSave);
-		
-		assertEquals(newDate, bookingUpdate.getBooking_date());
-		
-		bookingService.delete(bookingUpdate);
+		bookingService.delete(bookingSave);
 	}
 }

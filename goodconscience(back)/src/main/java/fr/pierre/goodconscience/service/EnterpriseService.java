@@ -61,6 +61,15 @@ public class EnterpriseService {
 		return null;
 	}
 	
+	public Enterprise createForTest(Enterprise enterprise) {
+		this.logger.debug("create Call = " + enterprise);
+		enterprise.setPassword(this.passwordEncoder.encode(enterprise.getPassword()));
+		enterprise.setLinkimg("/assets/images/users/unknow.png");
+		Enterprise enterpriseSave = enterpriseRepository.save(enterprise);
+		this.logger.debug("create Return = " + enterpriseSave);
+		return enterpriseSave;
+	}
+	
 	public Enterprise update(Enterprise enterprise) {
 		this.logger.debug("update Call = " + enterprise);
 		if (enterpriseRepository.getById(enterprise.getId()) != null) {

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
 import fr.pierre.goodconscience.entity.User;
 
@@ -16,14 +15,14 @@ public class UserServiceTest {
 	UserService userService;
 	
 	@Test
-	@Rollback
 	public void createUpdateAndDeleteUser() {
-		User userTest = new User();
-		userTest.setEmail("test@test.test");
-		userTest.setUsername("test");
-		userTest.setPassword("123456");
+
+		User user = new User();
+		user.setEmail("test@test.test");
+		user.setUsername("test");
+		user.setPassword("123456");
 		
-		User userSave = userService.create(userTest);
+		User userSave = userService.createForTest(user);
 		
 		assertEquals("test", userSave.getUsername());
 		

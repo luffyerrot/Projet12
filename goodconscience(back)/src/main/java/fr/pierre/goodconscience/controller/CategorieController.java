@@ -27,7 +27,10 @@ public class CategorieController {
 	CategorieService categorieService;
 	
 	CategorieSerializable categorieSerializable = new CategorieSerializable();
-	
+
+	/** 
+	 * Renvoi toutes les categorie
+	 **/
 	@GetMapping("/")
 	public ResponseEntity<List<Categorie>> getAll() {
 		List<Categorie> categories = categorieService.getAll();
@@ -37,18 +40,27 @@ public class CategorieController {
 		return ResponseEntity.ok(categories);
 	}
 
+	/** 
+	 * Renvoi une categorie grace à son id 
+	 **/
 	@GetMapping("/{id}")
 	public ResponseEntity<Categorie> getById(@PathVariable Long id) {
 		Categorie categorie = categorieService.getById(id);
 		return ResponseEntity.ok(categorie);
 	}
-	
+
+	/** 
+	 * Créer une catégorie 
+	 **/
 	@PutMapping("/create")
 	public ResponseEntity<Categorie> create(@RequestBody Categorie categorie) {
 		Categorie categorieCreate = categorieService.create(categorie);
 		return ResponseEntity.ok(categorieCreate);
 	}
-	
+
+	/** 
+	 * Met à jour une categorie
+	 **/
 	@PostMapping("/update")
 	public ResponseEntity<Categorie> update(@RequestBody Categorie categorie) {
 		Categorie categorieUpdate = categorieService.update(categorie);
@@ -57,7 +69,10 @@ public class CategorieController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Supprime une catégorie
+	 **/
 	@DeleteMapping("/delete")
 	public ResponseEntity<Void> delete(@RequestBody Categorie categorie) {
 		categorieService.delete(categorie);

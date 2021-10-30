@@ -1,4 +1,4 @@
-package fr.pierre.goodconscience.secutiry.filter;
+package fr.pierre.goodconscience.security.filter;
 
 import java.io.IOException;
 
@@ -15,8 +15,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import fr.pierre.goodconscience.secutiry.CustomUserDetailsService; 
-import fr.pierre.goodconscience.secutiry.util.jwtUtil;
+import fr.pierre.goodconscience.security.CustomUserDetailsService;
+import fr.pierre.goodconscience.security.util.jwtUtil;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {

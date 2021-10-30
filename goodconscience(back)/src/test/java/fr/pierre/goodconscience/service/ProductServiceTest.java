@@ -21,6 +21,7 @@ public class ProductServiceTest {
 		Product productTest = new Product();
 		productTest.setName("test");
 		productTest.setDescription("test description");
+		productTest.setLinkimg("link/test");
 		
 		Product productSave = productService.create(productTest);
 		

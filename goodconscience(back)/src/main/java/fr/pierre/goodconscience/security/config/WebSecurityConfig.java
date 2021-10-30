@@ -1,4 +1,4 @@
-package fr.pierre.goodconscience.secutiry.config;
+package fr.pierre.goodconscience.security.config;
 
 import javax.sql.DataSource;
 
@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import fr.pierre.goodconscience.secutiry.filter.JwtFilter;
+import fr.pierre.goodconscience.security.filter.JwtFilter;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

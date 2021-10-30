@@ -18,14 +18,16 @@ public class EnterpriseInformationsServiceTest {
 	@Test
 	@Rollback
 	public void createUpdateAndDeleteEnterpriseInformations() {
+		
 		EnterpriseInformations enterpriseInformationsTest = new EnterpriseInformations();
-		enterpriseInformationsTest.setId(1L);
+		enterpriseInformationsTest.setId(30L);
 		enterpriseInformationsTest.setAdress("rue du test");
 		enterpriseInformationsTest.setCountry("Test");
 		enterpriseInformationsTest.setNumber(4);
 		enterpriseInformationsTest.setPhone_number("0631313131");
 		enterpriseInformationsTest.setPostcode("48965");
 		enterpriseInformationsTest.setSiret("1234567891234");
+		enterpriseInformationsTest.setDescription("description test");
 		
 		EnterpriseInformations enterpriseInformationsSave = enterpriseInformationsService.create(enterpriseInformationsTest);
 		

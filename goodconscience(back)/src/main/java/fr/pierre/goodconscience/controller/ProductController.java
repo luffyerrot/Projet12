@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.pierre.goodconscience.entity.Enterprise;
 import fr.pierre.goodconscience.entity.Product;
-import fr.pierre.goodconscience.secutiry.util.jwtUtil;
+import fr.pierre.goodconscience.security.util.jwtUtil;
 import fr.pierre.goodconscience.serializer.ProductSerializable;
 import fr.pierre.goodconscience.service.EnterpriseService;
 import fr.pierre.goodconscience.service.GiftBasketService;
@@ -36,7 +36,10 @@ public class ProductController {
 	jwtUtil jwtUtil;
 	
 	ProductSerializable productSerializable = new ProductSerializable();
-	
+
+	/** 
+	 * Renvoi tous les produits de l'entreprise connecté
+	 **/
 	@GetMapping("/")
 	public ResponseEntity<List<Product>> getAll(@RequestHeader("Authorization") String token) {
 		String email = jwtUtil.extractUsername(token.substring(7));
@@ -50,7 +53,10 @@ public class ProductController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Créer un produit pour l'entreprise connecté
+	 **/
 	@PutMapping("/create")
 	public ResponseEntity<Product> create(@RequestHeader("Authorization") String token, @RequestBody Product product) {
 		String email = jwtUtil.extractUsername(token.substring(7));
@@ -61,7 +67,10 @@ public class ProductController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Met à jour un produit
+	 **/
 	@PostMapping("/update")
 	public ResponseEntity<Product> update(@RequestBody Product product) {
 		Product productCreate = productService.update(product);

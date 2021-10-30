@@ -1,5 +1,7 @@
 package fr.pierre.goodconscience.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.pierre.goodconscience.entity.Booking;
+import fr.pierre.goodconscience.entity.GiftBasket;
+import fr.pierre.goodconscience.entity.User;
 import fr.pierre.goodconscience.repository.BookingRepository;
 
 @Service
@@ -15,6 +19,10 @@ public class BookingService {
 
 	@Autowired
 	BookingRepository bookingRepository;
+	@Autowired
+	UserService userService;
+	@Autowired
+	GiftBasketService giftBasketService;
 
 	Logger logger = LoggerFactory.getLogger(BookingService.class);
 	
@@ -45,11 +53,65 @@ public class BookingService {
 		return bookings;
 	}
 	
-	public Booking create(Booking booking) {
-		this.logger.debug("create Call = " + booking);
-		Booking bookingSave = bookingRepository.save(booking);
-		this.logger.debug("create Return = " + bookingSave);
-		return bookingSave;
+	public Booking create(String email, String giftBasketName) {
+		User user = userService.findByEmail(email);
+		List<GiftBasket> giftBaskets = giftBasketService.getByName(giftBasketName);
+		if (giftBaskets != null) {
+			GiftBasket giftBasketForBooking = null;
+			List<Booking> bookings = this.getAll();
+			for (int i = 0; i < giftBaskets.size(); i++) {
+				if (giftBasketForBooking == null) {
+					List<GiftBasket> bookingsGiftBasket = new ArrayList<>();
+					if (bookings != null && !bookings.isEmpty()) {
+						for (int j = 0; j < bookings.size(); j++) {
+							bookingsGiftBasket.add(bookings.get(j).getGiftBasket());
+						}
+					}
+					if (!bookingsGiftBasket.isEmpty()) {
+						if (!bookingsGiftBasket.contains(giftBaskets.get(i))) {
+							giftBasketForBooking = giftBaskets.get(i);
+						}
+					} else {
+						giftBasketForBooking = giftBaskets.get(i);
+					}
+				}
+			}
+			if (giftBasketForBooking != null) {
+				if (this.getByGiftBasketId(giftBasketForBooking.getId()) == null) {
+					List<User> usersBooking = new ArrayList<>();
+					List<Booking> bookingsByGiftBasketName = this.getByGiftBasketName(giftBasketName);
+					if (bookingsByGiftBasketName != null) {
+						for (int k = 0; k < bookingsByGiftBasketName.size(); k++) {
+							usersBooking.add(bookingsByGiftBasketName.get(k).getUser());
+						}
+						if (!usersBooking.contains(user)) {
+							Booking booking = new Booking();
+							booking.setBooking_date(new Date());
+							booking.setUser(user);
+							booking.setGiftBasket(giftBasketForBooking);
+							Booking bookingCreate = bookingRepository.save(booking);
+							if (bookingCreate != null) {
+								return bookingCreate;
+							}
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	public Booking createForTest(GiftBasket giftBasket) {
+		
+		Booking booking = new Booking();
+		booking.setBooking_date(new Date());
+		booking.setGiftBasket(giftBasket);
+		booking.setUser(null);
+		Booking bookingCreate = bookingRepository.save(booking);
+		if (bookingCreate != null) {
+			return bookingCreate;
+		}
+		return null;
 	}
 	
 	public Booking update(Booking booking) {

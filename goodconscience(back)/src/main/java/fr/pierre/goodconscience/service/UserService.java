@@ -14,7 +14,7 @@ import fr.pierre.goodconscience.entity.User;
 import fr.pierre.goodconscience.repository.EnterpriseRepository;
 import fr.pierre.goodconscience.repository.RoleRepository;
 import fr.pierre.goodconscience.repository.UserRepository;
-import fr.pierre.goodconscience.secutiry.util.jwtUtil;
+import fr.pierre.goodconscience.security.util.jwtUtil;
 
 @Service
 public class UserService {
@@ -59,6 +59,15 @@ public class UserService {
 		}
 		this.logger.debug("create Return = " + null);
 		return null;
+	}
+	
+	public User createForTest(User user) {
+		this.logger.debug("create Call = " + user);
+		user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+		user.setLinkimg("/assets/images/users/unknow.png");
+		User userSave = userRepository.save(user);
+		this.logger.debug("create Return = " + userSave);
+		return userSave;
 	}
 	
 	public User update(User user) {

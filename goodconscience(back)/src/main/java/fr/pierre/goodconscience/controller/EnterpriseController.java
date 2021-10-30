@@ -33,7 +33,10 @@ public class EnterpriseController {
 	
 	EnterpriseSerializable enterpriseSerializable = new EnterpriseSerializable();
 	EnterpriseInformationsSerializable enterpriseInformationsSerializable = new EnterpriseInformationsSerializable();
-	
+
+	/** 
+	 * Renvoi toutes les entreprises
+	 **/
 	@GetMapping("/")
 	public ResponseEntity<List<Enterprise>> getAll() {
 		List<Enterprise> enterprises = enterpriseService.getAll();
@@ -43,12 +46,18 @@ public class EnterpriseController {
 		return ResponseEntity.ok(enterprises);
 	}
 
+	/** 
+	 * Renvoi une entreprise grace à son id
+	 **/
 	@GetMapping("/id/{id}")
 	public ResponseEntity<Enterprise> getById(@PathVariable Long id) {
 		Enterprise enterprise = enterpriseService.getById(id);
 		return ResponseEntity.ok(enterpriseSerializable.parseEnterprise(enterprise));
 	}
-	
+
+	/** 
+	 * Créer une entreprise
+	 **/
 	@PutMapping("/create")
 	public ResponseEntity<Enterprise> create(@RequestBody Enterprise enterprise) {
 		Enterprise enterpriseCreate = enterpriseService.create(enterprise);
@@ -57,7 +66,10 @@ public class EnterpriseController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Créer les informations de l'entreprise
+	 **/
 	@PutMapping("/createinfos")
 	public ResponseEntity<EnterpriseInformations> createinfos(@RequestBody EnterpriseInformations enterpriseInformations) {
 		EnterpriseInformations enterpriseInfosCreate = enterpriseInformationsService.create(enterpriseInformations);
@@ -66,7 +78,10 @@ public class EnterpriseController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Met à jour une entreprise
+	 **/
 	@PostMapping("/update")
 	public ResponseEntity<Enterprise> update(@RequestBody Enterprise enterprise) {
 		Enterprise enterpriseUpdate = enterpriseService.update(enterprise);
@@ -75,7 +90,10 @@ public class EnterpriseController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Met à jour les informations d'une entreprise
+	 **/
 	@PostMapping("/updateinfos")
 	public ResponseEntity<EnterpriseInformations> updateinfos(@RequestBody EnterpriseInformations enterpriseInformations) {
 		System.out.println(enterpriseInformations.toString() + "------------updateinfos");
@@ -85,7 +103,10 @@ public class EnterpriseController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Supprime une entreprise
+	 **/
 	@DeleteMapping("/delete")
 	public ResponseEntity<Void> delete(@RequestBody Enterprise enterprise) {
 		enterpriseService.delete(enterprise);

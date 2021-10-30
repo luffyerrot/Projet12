@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.pierre.goodconscience.entity.Enterprise;
 import fr.pierre.goodconscience.entity.User;
-import fr.pierre.goodconscience.secutiry.util.jwtUtil;
+import fr.pierre.goodconscience.security.util.jwtUtil;
 import fr.pierre.goodconscience.serializer.EnterpriseSerializable;
 import fr.pierre.goodconscience.serializer.UserSerializable;
 import fr.pierre.goodconscience.service.EnterpriseService;
@@ -32,6 +32,9 @@ public class LoginController {
 	UserSerializable userSerializable = new UserSerializable();
 	EnterpriseSerializable enterpriseSerializable = new EnterpriseSerializable();
 
+	/** 
+	 * Renvoi le token lors du login selon qu'il soit un client ou une entreprise
+	 **/
 	@GetMapping("/")
 	public ResponseEntity<JSONObject> login(@RequestHeader("email") String email, @RequestHeader("password") String password) {
 		email = email.toLowerCase();
@@ -49,7 +52,10 @@ public class LoginController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	/** 
+	 * Renvoi le profil utilisateur ou entreprise connecté
+	 **/
 	@GetMapping("/me")
 	public ResponseEntity<Object> me(@RequestHeader("Authorization") String token) {
 		String email = jwtUtil.extractUsername(token.substring(7));
