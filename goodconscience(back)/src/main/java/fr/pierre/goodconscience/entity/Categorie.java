@@ -27,16 +27,6 @@ public class Categorie implements Serializable {
 
 	@Column(nullable = false)
 	private String description;
-	
-	public Categorie() {
-		
-	}
-	
-	public Categorie(Long id, String name, String description) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-	}
 
 	@Override
 	public String toString() {

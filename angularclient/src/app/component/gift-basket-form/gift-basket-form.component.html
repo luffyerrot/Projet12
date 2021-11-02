@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div id="subscribe-form-input">
+      <div id="subscribe-form-parent">
         <h2>produit</h2>
         <div *ngFor="let productForm of products.controls; let i = index">
           <div *ngIf="productForm" id="button-form">
@@ -51,15 +51,15 @@
           </div>
         </div>
       </div>
-      <div id="subscribe-form-parent">
-        <div  formArrayName="products" class="input-form" id="subscribe-form-input">
+      <div id="subscribe-form-input">
+        <div  formArrayName="products" class="input-form">
           <div id="button-form" *ngFor="let productE of productList">
             <button *ngIf="!compareProduct(productE)" type="button" class="red" (click)="addProduct(productE.id, productE.name, productE.description, productE.linkimg)">{{productE.name}}</button>
           </div>
         </div>
       </div>
       <div class="horizontal-ligne"></div>
-      <div id="subscribe-form-input">
+      <div id="subscribe-form-parent">
         <h2>Categorie</h2>
         <div *ngFor="let categorieForm of categories.controls; let i = index">
           <div *ngIf="categorieForm" id="button-form">
@@ -70,8 +70,8 @@
           </div>
         </div>
       </div>
-      <div id="subscribe-form-parent">
-        <div  formArrayName="categories" class="input-form" id="subscribe-form-input">
+      <div id="subscribe-form-input">
+        <div  formArrayName="categories" class="input-form">
           <div id="button-form" *ngFor="let categorieE of categorieList">
             <button *ngIf="!compareCategorie(categorieE)" type="button" class="red" (click)="addCategorie(categorieE.id, categorieE.name, categorieE.description)">{{categorieE.name}}</button>
           </div>

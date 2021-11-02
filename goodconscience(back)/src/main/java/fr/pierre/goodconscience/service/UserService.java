@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import fr.pierre.goodconscience.entity.Categorie;
 import fr.pierre.goodconscience.entity.Role;
 import fr.pierre.goodconscience.entity.User;
 import fr.pierre.goodconscience.repository.EnterpriseRepository;
@@ -88,6 +89,15 @@ public class UserService {
 			return;
 		}
 		this.logger.debug("can't delete : " + user);
+	}
+	
+	public User addRestriction(String email, Categorie categorie) {
+		User user = this.findByEmail(email);
+		if (user.getCategories() != null && !user.getCategories().contains(categorie)) {
+			user.getCategories().add(categorie);
+			return this.update(user);
+		}
+		return null;
 	}
 	
 	public User findByEmail(String email) {

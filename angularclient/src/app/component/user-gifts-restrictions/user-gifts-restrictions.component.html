@@ -4,6 +4,9 @@
     </div>
 	<div class="box gift" *ngFor="let giftBasket of giftBaskets; let i = index">
         <h2>{{giftBasket.name}}</h2>
+        <div class="green" *ngFor="let categorie of giftBasket.categories; let i = index">{{ categorie.name }}</div>
+        <br>
+        <br>
         <p>{{giftBasket.description}}</p>
         <div class="child-gift-box" *ngFor="let product of giftBasket.products">
             <div class="grid-infos-description">

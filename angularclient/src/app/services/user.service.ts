@@ -66,6 +66,12 @@ export class UserService {
     });
   }
 
+  public deleteBooking(booking: Booking) {
+    this.http.delete(this.bookingUrl + 'delete/' + booking.id).subscribe(() => {
+      this.redirectTo('/user/bookings');
+    });
+  }
+
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

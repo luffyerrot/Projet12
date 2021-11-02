@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Booking } from 'src/app/model/booking';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-booking-user-info',
@@ -13,7 +14,7 @@ export class BookingUserInfoComponent implements OnInit {
 
   bookingUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
     this.bookingUrl = 'http://localhost:8080/booking/';
   }
 
@@ -23,4 +24,11 @@ export class BookingUserInfoComponent implements OnInit {
     });
   }
 
+  connected() {
+    return this.userService.identity;
+  }
+
+  delete(booking: Booking) {
+    this.userService.deleteBooking(booking);
+  }
 }

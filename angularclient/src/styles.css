@@ -487,6 +487,7 @@ form {
     margin-left: 20px;
     height: 29px;
     color: #7a1515;
+    display: table;
 }
 
 /* informations */

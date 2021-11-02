@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 import fr.pierre.goodconscience.entity.Enterprise;
 import fr.pierre.goodconscience.entity.EnterpriseInformations;
@@ -18,6 +19,7 @@ public class EnterpriseServiceTest {
 	EnterpriseInformationsService enterpriseInformationsService;
 	
 	@Test
+	@Rollback
 	public void updateAndDeleteEnterprise() {
 		
 		Enterprise enterprise = new Enterprise();

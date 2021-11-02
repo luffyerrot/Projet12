@@ -30,11 +30,6 @@ public class Booking implements Serializable {
 	public Booking() {
 		
 	}
-	
-	public Booking(Long id, Date booking_date) {
-		this.id = id;
-		this.booking_date = booking_date;
-	}
 
 	@Override
 	public String toString() {

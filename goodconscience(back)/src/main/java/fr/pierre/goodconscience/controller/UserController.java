@@ -82,14 +82,10 @@ public class UserController {
 	public ResponseEntity<Void> createRestriction(@RequestBody Categorie categorie, @RequestHeader("Authorization") String token) {
 		String email = jwtUtil.extractUsername(token.substring(7));
 		Categorie categorieGetById = categorieService.getById(categorie.getId());
-		if (userService.findByEmail(email) != null) {
-			User user = userService.findByEmail(email);
-			if (categorieGetById != null && !user.getCategories().contains(categorieGetById)) {
-				user.getCategories().add(categorie);
-				User userUpdate = userService.update(user);
-				if (userUpdate != null) {
-					return ResponseEntity.ok().build();
-				}
+		if (userService.findByEmail(email) != null && categorieGetById != null) {
+			User userUpdate = userService.addRestriction(email, categorieGetById);
+			if (userUpdate != null) {
+				return ResponseEntity.ok().build();
 			}
 		}
 		return ResponseEntity.notFound().build();

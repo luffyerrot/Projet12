@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -111,23 +111,15 @@ public class BookingController {
 	}
 
 	/** 
-	 * Met à jour une réservation
-	 **/
-	@PostMapping("/update")
-	public ResponseEntity<Booking> update(@RequestBody Booking booking) {
-		Booking bookingCreate = bookingService.update(booking);
-		if (bookingCreate != null) {
-			return ResponseEntity.ok(bookingCreate);
-		}
-		return ResponseEntity.notFound().build();
-	}
-
-	/** 
 	 * Supprime une réservation 
 	 **/
-	@DeleteMapping("/delete")
-	public ResponseEntity<Void> delete(@RequestBody Booking booking) {
-		bookingService.delete(booking);
-		return ResponseEntity.ok().build();
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		Booking booking = bookingService.getById(id);
+		if (booking != null) {
+			bookingService.delete(booking);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.notFound().build();
 	}
 }

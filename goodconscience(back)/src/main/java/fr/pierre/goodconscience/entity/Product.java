@@ -33,16 +33,6 @@ public class Product implements Serializable {
 
 	@Column(nullable = false)
 	private String description;
-	
-	public Product() {
-		
-	}
-	
-	public Product(Long id, String name, String description) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-	}
 
 	@Override
 	public String toString() {

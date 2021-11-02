@@ -85,9 +85,6 @@ public class EnterpriseService {
 		this.logger.debug("delete Call = " + enterprise);
 		if (enterpriseRepository.getById(enterprise.getId()) != null) {
 			enterpriseRepository.delete(enterprise);
-			if (enterpriseInformationsRepository.getById(enterprise.getId()) != null) {
-				enterpriseInformationsRepository.deleteById(enterprise.getId());
-			}
 			return;
 		}
 		this.logger.debug("can't delete : " + enterprise);

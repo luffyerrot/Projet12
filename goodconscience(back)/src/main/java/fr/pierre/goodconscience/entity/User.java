@@ -39,16 +39,6 @@ public class User implements Serializable {
 	
 	@Column(nullable = false)
 	private String linkimg;
-	
-	public User() {
-		
-	}
-	
-	public User(Long id, String email, String username) {
-		this.id = id;
-		this.email = email;
-		this.username = username;
-	}
 
 	@Override
 	public String toString() {

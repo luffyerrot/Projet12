@@ -42,21 +42,6 @@ public class EnterpriseInformations implements Serializable {
 
 	@Column(nullable = false)
 	private String description;
-	
-	public EnterpriseInformations() {
-		
-	}
-	
-	public EnterpriseInformations(Long id, String siret, Integer number, String adress, String country, String postcode, String phone_number, String description) {
-		this.id = id;
-		this.siret = siret;
-		this.number = number;
-		this.adress = adress;
-		this.country = country;
-		this.postcode = postcode;
-		this.phone_number = phone_number;
-		this.description = description;
-	}
 
 	@Override
 	public String toString() {

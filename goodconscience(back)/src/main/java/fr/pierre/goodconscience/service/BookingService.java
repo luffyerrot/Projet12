@@ -33,6 +33,17 @@ public class BookingService {
 		return bookings;
 	}
 	
+	public Booking getById(Long id) {
+		this.logger.debug("getById Call = " + id);
+		if (bookingRepository.findById(id).isPresent()) {
+			Booking booking = bookingRepository.findById(id).get();
+			this.logger.debug("getById Return = " + booking);
+			return booking;
+		}
+		this.logger.debug("getById Return = " + null);
+		return null;
+	}
+	
 	public List<Booking> getByGiftBasketName(String name) {
 		this.logger.debug("getByGiftBasketName Call = " + name);
 		List<Booking> bookings = bookingRepository.findByGiftBasketName(name);
@@ -111,17 +122,6 @@ public class BookingService {
 		if (bookingCreate != null) {
 			return bookingCreate;
 		}
-		return null;
-	}
-	
-	public Booking update(Booking booking) {
-		this.logger.debug("update Call = " + booking);
-		if (bookingRepository.getById(booking.getId()) != null) {
-			Booking bookingSave = bookingRepository.save(booking);
-			this.logger.debug("update Return = " + bookingSave);
-			return bookingSave;
-		}
-		this.logger.debug("update Return = " + null);
 		return null;
 	}
 	

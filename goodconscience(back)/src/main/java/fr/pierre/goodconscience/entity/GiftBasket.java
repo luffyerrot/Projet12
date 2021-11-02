@@ -37,17 +37,6 @@ public class GiftBasket implements Serializable {
 
 	@Column(nullable = false)
 	private Date recovery_date;
-	
-	public GiftBasket() {
-		
-	}
-	
-	public GiftBasket(Long id, String name, String description, Date recovery_date) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.recovery_date = recovery_date;
-	}
 
 	@Override
 	public String toString() {

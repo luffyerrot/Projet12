@@ -43,12 +43,6 @@ public class Enterprise implements Serializable {
 	public Enterprise() {
 		
 	}
-	
-	public Enterprise(Long id, String email, String name) {
-		this.id = id;
-		this.email = email;
-		this.name = name;
-	}
 
 	@Override
 	public String toString() {

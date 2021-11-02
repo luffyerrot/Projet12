@@ -219,7 +219,9 @@ public class GiftBasketService {
 		Enterprise enterprise = enterpriseService.findByEmail(email);
 		List<Product> products = giftBasket.getProducts();
 		List<Categorie> categories = giftBasket.getCategories();
-		products.forEach(p -> p.setEnterprise(enterprise));
+		if (products != null) {
+			products.forEach(p -> p.setEnterprise(enterprise));
+		}
 		giftBasket.setProducts(null);
 		giftBasket.setCategories(null);
 		giftBasket.setEnterprise(enterprise);
@@ -256,10 +258,7 @@ public class GiftBasketService {
 	
 	public void delete(GiftBasket giftBasket) {
 		this.logger.debug("delete Call = " + giftBasket);
-		if (giftBasketRepository.getById(giftBasket.getId()) != null) {
-			giftBasketRepository.delete(giftBasket);
-			return;
-		}
+		giftBasketRepository.delete(giftBasket);
 		this.logger.debug("can't delete : " + giftBasket);
 	}
 }

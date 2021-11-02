@@ -46,22 +46,6 @@ public class UserInformations implements Serializable {
 
 	@Column(nullable = true)
 	private String phone_number;
-	
-	public UserInformations() {
-		
-	}
-
-	public UserInformations(Long id, String firstname, String name, Date birthday, Integer number, String adress, String country, Integer postcode, String phone_number) {
-		this.id = id;
-		this.firstname = firstname;
-		this.name = name;
-		this.birthday = birthday;
-		this.number = number;
-		this.adress = adress;
-		this.country = country;
-		this.postcode = postcode;
-		this.phone_number = phone_number;
-	}
 
 	@Override
 	public String toString() {
